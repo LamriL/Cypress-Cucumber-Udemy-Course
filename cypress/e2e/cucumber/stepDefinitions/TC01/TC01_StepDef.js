@@ -6,7 +6,7 @@ beforeEach(function(){
 
 Given('I am on the Conduit Login page', function(){
     cy.visit('https://react-redux.realworld.io')
-    cy.get('a[href="#login"]').click()
+    cy.get('a[href="#loginSS"]').click()
 })
 
 When('I login with valid credentials', function(dataTable){
