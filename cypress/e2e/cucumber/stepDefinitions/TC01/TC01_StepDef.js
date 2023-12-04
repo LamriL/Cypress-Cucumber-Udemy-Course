@@ -1,13 +1,17 @@
 import {Given, When, Then} from 'cypress-cucumber-preprocessor/steps'
 
+beforeEach(function(){
+    cy.fixture('ConduitData').as('data')
+})
+
 Given('I am on the Conduit Login page', function(){
     cy.visit('https://react-redux.realworld.io')
     cy.get('a[href="#login"]').click()
 })
 
-When('I login with valid credentials', function(){
-    cy.get('input[type="email"]').type('cypressdemo@gmail.com')
-    cy.get('input[type="password"]').type('cypressdemo')
+When('I login with valid credentials', function(dataTable){
+    cy.get('input[type="email"]').type(dataTable.rawTable[1][0])
+    cy.get('input[type="password"]').type(dataTable.rawTable[1][1])
     cy.get('button[type="submit"]').click()
 })
 
